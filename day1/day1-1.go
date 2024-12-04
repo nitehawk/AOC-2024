@@ -30,12 +30,6 @@ func readInput(inputname string) (cola []int, colb []int) {
 	}
 }
 
-func check(e error) {
-	if e != nil {
-		panic(e)
-	}
-}
-
 func main() {
 	// Read the input data
 	// 2 columns of numbers
