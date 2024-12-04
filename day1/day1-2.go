@@ -4,7 +4,7 @@ import (
 	"sort"
 )
 
-func day1a() {
+func day1b() {
 	// Read the input data
 	// 2 columns of numbers
 	cola, colb := day1readInput("input1")
@@ -16,18 +16,22 @@ func day1a() {
 	sort.Ints(cola)
 	sort.Ints(colb)
 
-	var dist int = 0
+	var sim int = 0
 
 	// Loop through the lists
 	for i := 0; i < len(cola); i++ {
 		a := cola[i]
-		b := colb[i]
-		d := a - b
-		if d < 0 {
-			d = -d
+		count := 0
+		for j := 0; j < len(colb); j++ {
+			if a == colb[j] {
+				count++
+			}
+			if a < colb[j] {
+				break
+			}
 		}
-		dist += d
+		sim += a * count
 	}
 
-	println(dist)
+	println(sim)
 }
