@@ -7,7 +7,7 @@ import (
 func day1b() {
 	// Read the input data
 	// 2 columns of numbers
-	cola, colb := day1readInput("input1")
+	cola, colb := day1readInput("input.txt")
 
 	//	cola := []int{1, 2, 3, 4}
 	//	colb := []int{5, 6, 9, 4}
