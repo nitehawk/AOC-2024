@@ -6,4 +6,5 @@ func main() {
 	day := 5
 	fmt.Printf("Day %d, puzzle a: %d\n", day, puzzlea())
 	fmt.Printf("Day %d, puzzle b: %d\n", day, puzzleb())
+	fmt.Printf("Day %d, puzzle b: %d\n", day, puzzleb2())
 }
