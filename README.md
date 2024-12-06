@@ -6,3 +6,4 @@ go mod init github.com/nitehawk/AOC-2024/day3
 
 Improve:
 * Only read input files once between each pair of puzzles where possible.
+* Consider splitting out a lib module for various read functions
