@@ -1,3 +1,3 @@
-module github.com/nitehawk/AOC-2024/aoclib
+module github.com/nitehawk/advent-of-code/aoclib
 
 go 1.23.1

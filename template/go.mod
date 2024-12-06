@@ -1,7 +1,7 @@
-module github.com/nitehawk/AOC-2024/day
+module github.com/nitehawk/advent-of-code/day
 
 go 1.23.1
 
-replace github.com/nitehawk/AOC-2024/aoclib => ../aoclib
+replace github.com/nitehawk/advent-of-code/aoclib => ../aoclib
 
-require github.com/nitehawk/AOC-2024/aoclib v0.0.0-00010101000000-000000000000
+require github.com/nitehawk/advent-of-code/aoclib v0.0.0-00010101000000-000000000000

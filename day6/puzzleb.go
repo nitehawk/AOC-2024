@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"slices"
 
-	aoclib "github.com/nitehawk/AOC-2024/aoclib"
+	aoclib "github.com/nitehawk/advent-of-code/aoclib"
 )
 
 // yeah.. it's y,x, and y increases going down.   it's how we read the input

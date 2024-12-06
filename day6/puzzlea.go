@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/nitehawk/AOC-2024/aoclib"
+	aoclib "github.com/nitehawk/advent-of-code/aoclib"
 )
 
 func puzzlea(inF string) int {
