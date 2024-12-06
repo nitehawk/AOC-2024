@@ -1,4 +1,4 @@
-package main
+package aoclib
 
 import (
 	"bufio"
@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func readInputMatrix(inputname string) [][]byte {
+func ReadInputMatrix(inputname string) [][]byte {
 	puzzle := [][]byte{}
 	file, err := os.Open(inputname)
 	if err != nil {
@@ -22,7 +22,7 @@ func readInputMatrix(inputname string) [][]byte {
 	return puzzle
 }
 
-func readInput(inputname string) int {
+func ReadInputBase(inputname string) int {
 	file, err := os.Open(inputname)
 	if err != nil {
 		panic(fmt.Sprintf("open %s: %v", inputname, err))
