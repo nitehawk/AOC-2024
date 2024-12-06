@@ -87,7 +87,7 @@ func walk(m [][]byte, start Point, mark bool, sm byte, obs byte) (bool, []Point)
 			gPos.x -= 1
 		}
 		if len(obsHist) > 5000 {
-			fmt.Println("We're lost...")
+			//fmt.Println("We're lost...")
 			return true, obsHist
 		}
 	}
