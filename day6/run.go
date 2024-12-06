@@ -6,8 +6,8 @@ import (
 
 func main() {
 	day := 6
-	inputs := []string{"input.txt", "inputtest.txt"}
+	inputs := []string{"input.txt", "inputtest.txt", "inputtest2.txt"}
 
 	fmt.Printf("Day %d, puzzle a: %d\n", day, puzzlea(inputs[0]))
-	fmt.Printf("Day %d, puzzle b: %d\n", day, puzzleb(inputs[1]))
+	fmt.Printf("Day %d, puzzle b: %d\n", day, puzzleb(inputs[0]))
 }
