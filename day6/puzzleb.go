@@ -1,13 +1,20 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
 
-func puzzleb(m [][]byte) int {
-	g := byte('^')
-	o := byte('#')
+	aoclib "github.com/nitehawk/AOC-2024/aoclib"
+)
 
-	sx, sy := findPos(m, g)
-	fmt.Println("Obs: ", string(o), " Guard ", sx, ",", sy)
+func puzzleb(inF string) int {
+	m := aoclib.ReadInputMatrix(inF)
+
+	g := []byte("^")
+	o := []byte("#")
+	s := []byte("x") // Replace each step we take with this character
+
+	sy, sx := aoclib.FindPos(m, g[0])
+	fmt.Println("Obs: ", string(o), " Guard ", sy, ",", sx, "  ", s)
 
 	return 0
 }

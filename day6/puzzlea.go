@@ -3,25 +3,18 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"slices"
+
+	"github.com/nitehawk/AOC-2024/aoclib"
 )
 
-func findPos(m [][]byte, f byte) (int, int) {
-	for x, row := range m {
-		y := slices.Index(row, f)
-		if y > 0 {
-			return x, y
-		}
-	}
-	return -1, -1
-}
+func puzzlea(inF string) int {
+	m := aoclib.ReadInputMatrix(inF)
 
-func puzzlea(m [][]byte) int {
 	g := []byte("^")
 	o := []byte("#")
 	s := []byte("x") // Replace each step we take with this character
 
-	gy, gx := findPos(m, g[0])
+	gy, gx := aoclib.FindPos(m, g[0])
 	fmt.Println("Obs: ", string(o), " Guard ", gx, ",", gy)
 
 	// Walk the guard
