@@ -4,6 +4,8 @@ import "fmt"
 
 func main() {
 	day := 0
-	fmt.Printf("Day %d, puzzle a: %d\n", day, puzzlea())
-	fmt.Printf("Day %d, puzzle b: %d\n", day, puzzleb())
+	inP := "input.txt"
+	inT := "inputtest.txt"
+	fmt.Printf("Day %d, puzzle a: %d\n", day, puzzlea(inP))
+	fmt.Printf("Day %d, puzzle b: %d\n", day, puzzleb(inT))
 }

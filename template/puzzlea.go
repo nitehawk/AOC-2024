@@ -1,5 +1,5 @@
 package main
 
-func puzzlea() int {
+func puzzlea(inF string) int {
 	return 0
 }
