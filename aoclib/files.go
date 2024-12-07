@@ -71,6 +71,26 @@ func ReadInputDim(inputname string) [][3]int {
 	return dim
 }
 
+// First used 2024-day7
+func ReadInputMathList(inputname string) [][]int {
+	file, err := os.Open(inputname)
+	if err != nil {
+		panic(fmt.Sprintf("open %s: %v", inputname, err))
+	}
+
+	puzzle := make([][]int, 0)
+
+	scan := bufio.NewScanner(file)
+	for scan.Scan() {
+		line := scan.Text()
+		d := strings.Replace(line, ":", "", 1)
+		r := lineToArray(d, " ")
+		puzzle = append(puzzle, r)
+	}
+
+	return puzzle
+}
+
 func ReadInputBase(inputname string) int {
 	file, err := os.Open(inputname)
 	if err != nil {
