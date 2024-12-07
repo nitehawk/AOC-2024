@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	day := 7
+	day := 6
 	inputs := []string{"input.txt", "inputtest.txt"}
 	ri := 0
 	starta := time.Now()
