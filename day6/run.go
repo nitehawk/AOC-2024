@@ -2,12 +2,19 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 func main() {
-	day := 6
-	inputs := []string{"input.txt", "inputtest.txt", "inputtest2.txt"}
-
-	fmt.Printf("Day %d, puzzle a: %d\n", day, puzzlea(inputs[0]))
-	fmt.Printf("Day %d, puzzle b: %d\n", day, puzzleb(inputs[0]))
+	day := 7
+	inputs := []string{"input.txt", "inputtest.txt"}
+	ri := 0
+	starta := time.Now()
+	resa := puzzlea(inputs[ri])
+	paf := time.Now()
+	startb := time.Now()
+	resb := puzzleb(inputs[ri])
+	pbf := time.Now()
+	fmt.Printf("Day %d, puzzle a: %d -- time: %s\n", day, resa, paf.Sub(starta).String())
+	fmt.Printf("Day %d, puzzle a: %d -- time: %s\n", day, resb, pbf.Sub(startb).String())
 }
