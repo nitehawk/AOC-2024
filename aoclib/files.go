@@ -8,6 +8,7 @@ import (
 	"strings"
 )
 
+// Convert a string to a slice of ints
 func lineToArray(line string, sep string) []int {
 	strs := strings.Split(line, sep)
 	arr := make([]int, len(strs))
@@ -23,6 +24,7 @@ func lineToArray(line string, sep string) []int {
 	return arr
 }
 
+// Read entire input as a concatenated single string
 func ReadSimpleInput(inputname string) string {
 	file, err := os.Open(inputname)
 	if err != nil {
@@ -38,6 +40,7 @@ func ReadSimpleInput(inputname string) string {
 	return puzzle
 }
 
+// Expected to result in a y*x matrix where all rows are the same length
 func ReadInputMatrix(inputname string) [][]byte {
 	puzzle := [][]byte{}
 	file, err := os.Open(inputname)
@@ -54,6 +57,8 @@ func ReadInputMatrix(inputname string) [][]byte {
 	return puzzle
 }
 
+// Read input into a slice of tripple-ints as dimensions
+// lxwxh -- Probably should have writtent this a bit more generic
 func ReadInputDim(inputname string) [][3]int {
 	file, err := os.Open(inputname)
 	if err != nil {
@@ -72,6 +77,7 @@ func ReadInputDim(inputname string) [][3]int {
 }
 
 // First used 2024-day7
+// 123: 1 2 ...
 func ReadInputMathList(inputname string) [][]int {
 	file, err := os.Open(inputname)
 	if err != nil {
@@ -91,7 +97,24 @@ func ReadInputMathList(inputname string) [][]int {
 	return puzzle
 }
 
-func ReadInputBase(inputname string) int {
+func ReadStringSlice(inputname string) []string {
+	file, err := os.Open(inputname)
+	if err != nil {
+		panic(fmt.Sprintf("open %s: %v", inputname, err))
+	}
+
+	out := make([]string, 0)
+	scan := bufio.NewScanner(file)
+	for scan.Scan() {
+		line := scan.Text()
+		out = append(out, line)
+	}
+
+	return out
+}
+
+// Template read function
+func readInputBase(inputname string) int {
 	file, err := os.Open(inputname)
 	if err != nil {
 		panic(fmt.Sprintf("open %s: %v", inputname, err))
