@@ -8,7 +8,7 @@ import (
 func main() {
 	day := 7
 	inputs := []string{"input.txt", "inputtest.txt"}
-	ri := 1
+	ri := 0
 	starta := time.Now()
 	resa := puzzlea(inputs[ri])
 	paf := time.Now()
