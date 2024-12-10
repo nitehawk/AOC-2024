@@ -1,0 +1,1 @@
+Read matrix currently uses a byte matrix... what if we just solve it using the byte matrix instead of converting to int?
