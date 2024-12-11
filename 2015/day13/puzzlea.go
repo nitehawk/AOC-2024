@@ -5,6 +5,8 @@ import (
 	"regexp"
 	"slices"
 	"strconv"
+	"sync"
+	"time"
 
 	"github.com/nitehawk/advent-of-code/aoclib"
 )
@@ -42,7 +44,8 @@ func seat(guests []string, seated []string, guestCheck chan []string) {
 	}
 }
 
-func workerHappyGuests(relmap map[string]map[string]int, guestCheck chan []string, done chan bool, bestscore chan int) {
+func workerHappyGuests(relmap map[string]map[string]int, guestCheck chan []string, bestscore chan int, wg *sync.WaitGroup) {
+	defer wg.Done()
 	best := -5000
 	score := 5
 	for {
@@ -65,7 +68,10 @@ func workerHappyGuests(relmap map[string]map[string]int, guestCheck chan []strin
 				best = score
 				fmt.Println(table, score)
 			}
-		case <-done:
+		case <-time.After(time.Second * 1):
+			bestscore <- best
+			return
+		case <-time.After(time.Second * 3):
 			bestscore <- best
 			return
 		}
@@ -86,17 +92,20 @@ func puzzlea(inF string) int {
 	}
 
 	// Setup channels
-	done := make(chan bool)
 	guestCheck := make(chan []string)
 	bestscore := make(chan int)
 
+	wg := sync.WaitGroup{}
+	wg.Add(1)
 	// Start happy guest worker
-	go workerHappyGuests(rel, guestCheck, done, bestscore)
+	go workerHappyGuests(rel, guestCheck, bestscore, &wg)
 
 	// Simulate seating guests
-	seat(guests, []string{}, guestCheck)
-	done <- true
+	seat(guests, []string{"Alice"}, guestCheck)
 
 	best := <-bestscore
+	wg.Wait()
 	return best
+
+	// Alice David Mallory Carol Frank Eric George Bob] 664
 }

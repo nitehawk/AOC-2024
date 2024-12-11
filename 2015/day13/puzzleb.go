@@ -1,6 +1,10 @@
 package main
 
-import "github.com/nitehawk/advent-of-code/aoclib"
+import (
+	"sync"
+
+	"github.com/nitehawk/advent-of-code/aoclib"
+)
 
 func puzzleb(inF string) int {
 	happy := aoclib.ReadStringSlice(inF)
@@ -15,17 +19,18 @@ func puzzleb(inF string) int {
 	}
 
 	// Setup channels
-	done := make(chan bool)
 	guestCheck := make(chan []string)
 	bestscore := make(chan int)
 
+	wgb := sync.WaitGroup{}
+	wgb.Add(1)
 	// Start happy guest worker
-	go workerHappyGuests(rel, guestCheck, done, bestscore)
+	go workerHappyGuests(rel, guestCheck, bestscore, &wgb)
 
 	// Simulate seating guests
-	seat(guests, []string{}, guestCheck)
-	done <- true
+	seat(guests, []string{"Alice"}, guestCheck)
 
 	best := <-bestscore
+	wgb.Wait()
 	return best
 }
