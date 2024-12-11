@@ -28,6 +28,28 @@ func blink(stones []int) []int {
 	return newstones
 }
 
+func blinkFive(stones []int, d int) int {
+	// Count down the depth of 5's
+	if d == 0 {
+		return len(stones)
+	}
+	d--
+	for i := 1; i <= 5; i++ {
+		stones = blink(stones)
+	}
+
+	count := 0
+	for _, s := range stones {
+		count += blinkFive([]int{s}, d)
+	}
+	// Give a rough sense of progress
+	fivecount++
+	if fivecount%50000000 == 0 {
+		fmt.Printf(".")
+	}
+	return count
+}
+
 func puzzlea(inF string) int {
 	puzstr := aoclib.ReadSimpleInput(inF)
 	stones := aoclib.LineToArray(puzstr, " ")
