@@ -16,5 +16,5 @@ func main() {
 	resb := puzzleb(inputs[ri])
 	pbf := time.Now()
 	fmt.Printf("Day %d, puzzle a: %d -- time: %s\n", day, resa, paf.Sub(starta).String())
-	fmt.Printf("Day %d, puzzle a: %d -- time: %s\n", day, resb, pbf.Sub(startb).String())
+	fmt.Printf("Day %d, puzzle b: %d -- time: %s\n", day, resb, pbf.Sub(startb).String())
 }
