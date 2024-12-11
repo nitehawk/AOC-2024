@@ -9,7 +9,7 @@ import (
 )
 
 // Convert a string to a slice of ints
-func lineToArray(line string, sep string) []int {
+func LineToArray(line string, sep string) []int {
 	strs := strings.Split(line, sep)
 	arr := make([]int, len(strs))
 
@@ -70,7 +70,7 @@ func ReadInputDim(inputname string) [][3]int {
 	scan := bufio.NewScanner(file)
 	for scan.Scan() {
 		line := scan.Text()
-		dim = append(dim, [3]int(lineToArray(line, "x")))
+		dim = append(dim, [3]int(LineToArray(line, "x")))
 	}
 
 	return dim
@@ -90,7 +90,7 @@ func ReadInputMathList(inputname string) [][]int {
 	for scan.Scan() {
 		line := scan.Text()
 		d := strings.Replace(line, ":", "", 1)
-		r := lineToArray(d, " ")
+		r := LineToArray(d, " ")
 		puzzle = append(puzzle, r)
 	}
 
