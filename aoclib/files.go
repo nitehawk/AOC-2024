@@ -112,6 +112,22 @@ func ReadStringSlice(inputname string) []string {
 
 	return out
 }
+func ReadIntSlice(inputname string) []int {
+	file, err := os.Open(inputname)
+	if err != nil {
+		panic(fmt.Sprintf("open %s: %v", inputname, err))
+	}
+
+	out := make([]int, 0)
+	scan := bufio.NewScanner(file)
+	for scan.Scan() {
+		line := scan.Text()
+		i, _ := strconv.Atoi(line)
+		out = append(out, i)
+	}
+
+	return out
+}
 
 // Template read function
 func readInputBase(inputname string) int {
