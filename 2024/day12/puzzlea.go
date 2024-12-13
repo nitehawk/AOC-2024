@@ -72,9 +72,12 @@ func priceFences(regions []regioninfo) int {
 }
 
 type regioninfo struct {
-	crop            string
-	sx, sy          int // First node of the region
-	area, perimeter int
+	crop                   string
+	sx, sy                 int // First node of the region
+	area, perimeter        int
+	minx, maxx, miny, maxy int
+	sides                  int
+	neighbors              map[byte]int // Track neighbor crops
 }
 type gardeninfo struct {
 	layout  [][]byte

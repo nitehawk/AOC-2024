@@ -1,0 +1,13 @@
+R: W s: 51,0 a: 66 s: 40 - Contains:
+  S s: 56,6  s: 4
+R: N s: 98,0 a: 137 s: 52 - Contains:
+  H s: 99,6  s: 4
+  U s: 99,8  s: 4
+R: D s: 6,9 a: 40 s: 18 - Contains:
+  B s: 8,11  s: 4
+R: E s: 66,10 a: 237 s: 94 - Contains:
+  X s: 85,20  s: 4
+R: W s: 55,15 a: 80 s: 36 - Contains:
+  M s: 60,20  s: 4
+R: Z s: 110,24 a: 71 s: 44 - Contains:
+  Q s: 111,30  s: 4
