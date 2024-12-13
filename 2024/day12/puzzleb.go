@@ -17,55 +17,6 @@ const (
 	W = 3
 )
 
-func fenceSidesB(garden *gardeninfo, reg regioninfo) int {
-	// Walk the region counting sides.  Find any regions contained within this region and add their sides to the total
-	sides := 0
-	crop := byte(reg.crop[0])
-	cx := reg.sx
-	cy := reg.sy
-	// Starting point for a region will be the topmost left corner
-	dir := E
-
-	for {
-		// If we've hit the edge of the garden, add 1 to the side count
-		if cx == 0 || cy == 0 || cx == len(garden.layout[0])-1 || cy == len(garden.layout)-1 {
-			sides++
-		}
-		// If we've hit a different crop, add 1 to the side count
-		if cy < 0 || cy >= len(garden.layout) || cx < 0 || cx >= len(garden.layout[cy]) || garden.layout[cy][cx] != crop {
-			sides++
-		}
-		// If we've hit a region that is contained within this one, add its
-		// side count to the total
-		for _, v := range garden.regions {
-			if v.sx > cx && v.sy > cy && v.sx+v.area > cx && v.sy+v.perimeter > cy {
-				sides += fenceSidesB(garden, v)
-			}
-		}
-
-		switch dir {
-		case N:
-			cy--
-		case E:
-			cx++
-		case S:
-			cy++
-		case W:
-			cx--
-		}
-
-		// If we've hit the starting point again, then we're done
-		if cx == reg.sx && cy == reg.sy {
-			break
-		}
-
-		// Move to the next direction
-		dir = (dir + 1) % 4
-	}
-
-	return sides
-}
-
 func fenceSides(garden *gardeninfo, reg regioninfo) int {
 	// Walk the region and count sides
 	sides := 0
@@ -196,7 +147,7 @@ func puzzleb(inF string) int {
 	garden.regions = fencePlan(garden)
 	cost := 0
 	for _, v := range garden.regions {
-		sides := fenceSidesB(&garden, v) // New pricing based on sides
+		sides := fenceSides(&garden, v) // New pricing based on sides
 		fmt.Println("Region: ", v.crop, " sides: ", sides, " area: ", v.area)
 		cost += sides * v.area
 	}
