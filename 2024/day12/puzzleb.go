@@ -201,24 +201,25 @@ func fenceSides(garden *gardeninfo, reg regioninfo) regioninfo {
 func findContainedRegions(garden *gardeninfo, o regioninfo) []regioninfo {
 	contained := make([]regioninfo, 0)
 	for _, i := range garden.regions {
-		if i.perimeter*2 >= o.area {
+		if i.area*2 >= o.area {
 			continue
 		}
 		if o.minx <= i.minx && o.maxx >= i.maxx && o.miny <= i.miny && o.maxy >= i.maxy {
 			contained = append(contained, i)
 		}
 	}
+	// If no contained regions, return
 	if len(contained) == 0 {
 		return contained
 	}
 
-	// Check contained regions of contained regions
+	// Check contained regions of contained regions to clear up contained neighbors
 	for cn, c := range contained {
 		subregions := findContainedRegions(garden, c)
 		if len(subregions) == 0 {
 			continue
 		}
-		fmt.Println("c", contained, "s", subregions)
+		fmt.Println("c", c, "s", subregions)
 		for _, sr := range subregions {
 			delete(contained[cn].neighbors, sr.crop[0])
 		}
@@ -255,14 +256,15 @@ func adjustContainedRegions(garden *gardeninfo) []regioninfo {
 
 	for _, o := range garden.regions {
 		contained := findContainedRegions(garden, o)
-		s := fmt.Sprintf("R: %s s: %d,%d a: %d s: %d - Contains:\n", o.crop, o.sx, o.sy, o.area, o.sides)
+		s := fmt.Sprintf("R: %s s: %d,%d a: %d s: %d n: %d - Contains:\n", o.crop, o.sx, o.sy, o.area, o.sides, len(o.neighbors))
 		for _, c := range contained {
 			o.sides += c.sides
-			s += fmt.Sprintf("  %s s: %d,%d  s: %d\n", c.crop, c.sx, c.sy, c.sides)
+			s += fmt.Sprintf("  %s s: %d,%d  s: %d   ns: %d\n", c.crop, c.sx, c.sy, c.sides, o.sides)
 		}
 		adjusted = append(adjusted, o)
+		out.Write([]byte(s))
 		if len(contained) > 0 {
-			out.Write([]byte(s))
+			//out.Write([]byte(s))
 			//fmt.Print(s)
 		}
 	}

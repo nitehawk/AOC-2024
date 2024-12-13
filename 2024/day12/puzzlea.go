@@ -76,7 +76,7 @@ type regioninfo struct {
 	sx, sy                 int // First node of the region
 	area, perimeter        int
 	minx, maxx, miny, maxy int
-	sides                  int
+	containedsides, sides  int
 	neighbors              map[byte]int // Track neighbor crops
 }
 type gardeninfo struct {

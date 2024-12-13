@@ -10,3 +10,5 @@ Next thought:
 1374140 
 1033352 
 1040388 
+873644 
+1292436 -- removed neighbor filter

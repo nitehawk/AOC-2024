@@ -7,7 +7,7 @@ import (
 
 func main() {
 	day := 12
-	inputs := []string{"input.txt", "inputtest.txt", "inputtestbig.txt"}
+	inputs := []string{"input.txt", "inputtest.txt", "inputtestbig.txt", "inputtest3.txt", "inputtest4.txt", "inputtest5.txt"}
 	ri := 0
 	starta := time.Now()
 	resa := puzzlea(inputs[ri])
