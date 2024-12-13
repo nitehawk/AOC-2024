@@ -5,7 +5,7 @@ import "fmt"
 func puzzlea(inF string) int {
 	tgt := 36000000
 
-	house := 500000
+	house := 829999
 	for {
 		// Get the score for the current house by backtracking the elves that would deliver here
 		score := 0
