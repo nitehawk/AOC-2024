@@ -4,3 +4,11 @@ Next thought:
 * Walk each node of the garden map
   * If the node hasn't been walked yet, Walk a region from that starting point
   * Append each region to a slice instead of a map of Crops
+
+
+843376
+1374140 
+1033352 
+1040388 
+873644 
+1292436 -- removed neighbor filter
