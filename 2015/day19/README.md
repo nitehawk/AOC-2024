@@ -1,0 +1,1 @@
+Somewhere to keep thoughts on the puzzles
